@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
+use Controllers\PaginasController;
 
 $router = new Router();
 
@@ -29,5 +30,11 @@ $router->post('/reestablecer', [AuthController::class, 'reestablecer']);
 $router->get('/mensaje', [AuthController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
+//Zona Publica 
+$router->get('/', [PaginasController::class, 'index']);
+$router->get('/servicios', [PaginasController::class, 'servicios']);
+$router->get('/proyectos', [PaginasController::class, 'proyectos']);
+$router->get('/nosotros', [PaginasController::class, 'nosotros']);
+$router->get('/contacto', [PaginasController::class, 'contacto']);
 
 $router->comprobarRutas();

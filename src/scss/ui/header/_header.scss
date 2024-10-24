@@ -1,0 +1,103 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.header--inicio{
+    min-height: 60rem;
+    background-image: url(../img/grafico.svg), url(../img/grafico.svg), 
+    linear-gradient(to right, rgba(v.$negro, .1), rgba(v.$negro, .1) ), 
+    image-set( url(../img/header.avif) 1x,  url(../img/header.webp) 1x,  
+    url(../img/header.jpg) 1x );
+    background-repeat: no-repeat;
+    background-size: 400px, 400px, cover,cover;
+    background-position: top left, bottom right, center center, center center;
+
+}
+
+.header {
+    background-color: v.$gris-oscuro;
+    padding: 1rem 0 3rem;
+
+
+    &--inicio{
+
+        @include m.tablet {
+            min-height: 40rem;
+        }
+        .header__contenedor{
+            min-height: auto;
+            @include m.tablet {
+                min-height: 40rem;
+            }
+        }
+    }
+
+&__contenedor{
+    min-height: auto;
+    @include m.contenedor;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+&__barra {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+    @include m.tablet {     
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+&__logo{
+    @include m.logo;
+    @include m.texto-fluido(4rem,5rem);
+    @include m.texto-degradado(v.$rojo, v.$blanco);
+    margin-top: 0;
+    font-weight: v.$bold;
+ &--bold{
+    font-weight: v.$black;
+ }
+}
+&__navegacion{
+    @include m.tablet { 
+        display: flex;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
+    }
+    a{
+        color: v.$blanco;
+        text-decoration: none;
+        font-size: 2.2rem;
+        display: block;
+        text-align: center; 
+
+        &:hover{
+            color: v.$mostaza;
+            font-size: 2.4rem;
+            font-weight: v.$bold;
+        }
+        @include m.tablet { 
+            margin-right: 2rem;
+
+            &:last-of-type{
+                margin-right: 0;
+            }
+        }
+    }
+}
+&__leyenda{
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo con 50% de opacidad */
+    padding: .5rem; /* Espaciado interno para separar el texto del borde */
+    border-radius: .8rem; /* Bordes redondeados */
+    color: v.$mostaza;
+    max-width: 48rem;
+    text-align: center;
+    font-weight: v.$bold;
+    line-height: 2;
+    //@include m.texto-degradado(v.$amarillo, v.$gris-claro);
+    @include m.tablet {
+        max-width: 48rem;
+        text-align: left;
+    }
+}
+}
